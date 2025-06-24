@@ -3,6 +3,7 @@ import { formSchema } from '.';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import QueryForm from '.';
+import userEvent from '@testing-library/user-event';
 
 describe('form schema', () => {
 	it('passes with valid input', () => {
@@ -44,6 +45,16 @@ describe('form should render', () => {
 		render(<QueryForm />);
 		const firstNameInput = screen.getByLabelText(/first name/i);
 		expect(firstNameInput).toBeInTheDocument();
-		expect(firstNameInput).toHaveAttribute('name', 'firstName'); // Optional check
+		expect(firstNameInput).toHaveAttribute('name', 'firstName');
+	});
+
+	it('throw error when first name submit with empty value', async () => {
+		render(<QueryForm />);
+		const submitButton = screen.getByRole('button', { name: /submit/i });
+
+		await userEvent.click(submitButton);
+		const input = screen.getByLabelText(/first name/i);
+		expect(input).toHaveAttribute('aria-invalid', 'true');
+		expect(input).toHaveAccessibleDescription(/This field is required/i);
 	});
 });

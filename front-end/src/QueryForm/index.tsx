@@ -1,4 +1,5 @@
-import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form';
+import { Button } from '@/components/ui/button';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -27,22 +28,32 @@ export default function QueryForm() {
 			checkbox: false,
 		},
 	});
+
+	function onSubmit(values: z.infer<typeof formSchema>) {
+		console.log(values);
+	}
+
 	return (
 		<Form {...form}>
 			<p>Contact Us</p>
-			<form>
+			<form onSubmit={form.handleSubmit(onSubmit)}>
 				<FormField
 					control={form.control}
 					name='firstName'
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>First Name</FormLabel>
+							<FormLabel>
+								First Name <span>*</span>
+							</FormLabel>
 							<FormControl>
 								<Input {...field} />
 							</FormControl>
+							<FormMessage />
 						</FormItem>
 					)}
 				></FormField>
+
+				<Button>Submit</Button>
 			</form>
 		</Form>
 	);
