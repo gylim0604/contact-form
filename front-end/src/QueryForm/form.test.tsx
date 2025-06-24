@@ -102,4 +102,10 @@ describe('form should render', () => {
 		expect(emailInput).toHaveAttribute('aria-invalid', 'true');
 		expect(emailInput).toHaveAccessibleDescription(/Please enter a valid email address/i);
 	});
+
+	it('render with message', () => {
+		const input = screen.getByLabelText(/Message/i);
+		expect(input).toBeInTheDocument();
+		expect(input).toHaveAttribute('name', 'message');
+	});
 });
