@@ -1,9 +1,16 @@
-import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import { expect, it } from 'vitest';
-import QueryForm from '.';
+import { describe, expect, it } from 'vitest';
+import { formSchema } from '.';
 
-it('renders form', () => {
-	render(<QueryForm />);
-	expect(screen.getByText(/Contact Us/i)).toBeInTheDocument();
+describe('form schema', () => {
+	it('passes with valid input', () => {
+		const result = formSchema.safeParse({
+			firstName: 'John',
+			lastName: 'Doe',
+			email: 'johndoe@example.com',
+			queryType: 'general',
+			message: 'Lorem ipsum',
+			checkbox: true,
+		});
+		expect(result.success).toBe(true);
+	});
 });
