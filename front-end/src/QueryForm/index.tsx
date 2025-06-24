@@ -50,7 +50,7 @@ export default function QueryForm() {
 								First Name <span className='text-green-600'>*</span>
 							</FormLabel>
 							<FormControl>
-								<Input className='border-neutral-400 rounded-sm' {...field} />
+								<Input className='border-neutral-400 rounded-sm hover:cursor-pointer hover:border-teal-600' {...field} />
 							</FormControl>
 							<FormMessage className='text-left' />
 						</FormItem>
@@ -66,7 +66,7 @@ export default function QueryForm() {
 								Last Name <span className='text-green-600'>*</span>
 							</FormLabel>
 							<FormControl>
-								<Input className='border-neutral-400 rounded-sm' {...field} />
+								<Input className='border-neutral-400 rounded-sm hover:cursor-pointer hover:border-teal-600' {...field} />
 							</FormControl>
 							<FormMessage className='text-left' />
 						</FormItem>
@@ -83,7 +83,7 @@ export default function QueryForm() {
 									Email Address <span className='text-green-600'>*</span>
 								</FormLabel>
 								<FormControl>
-									<Input className='border-neutral-400 rounded-sm' {...field} />
+									<Input className='border-neutral-400 rounded-sm hover:cursor-pointer hover:border-teal-600' {...field} />
 								</FormControl>
 								<FormMessage className='text-left' />
 							</FormItem>
@@ -102,13 +102,13 @@ export default function QueryForm() {
 								</FormLabel>
 								<FormControl>
 									<RadioGroup onValueChange={field.onChange} className='flex gap-4'>
-										<FormItem className='flex-1 flex items-center border-1 border-neutral-400 rounded-sm px-4 py-2'>
+										<FormItem className='flex-1 flex items-center border-1 border-neutral-400 rounded-sm px-4 py-2 hover:cursor-pointer'>
 											<FormControl className='border-neutral-300 aria-invalid:ring-neutral-300 aria-invalid:border-neutral-300'>
 												<RadioGroupItem value='general' />
 											</FormControl>
 											<FormLabel className='text-neutral-600 data-[error=true]:text-neutral-600'>General Enquiry</FormLabel>
 										</FormItem>
-										<FormItem className='flex-1 flex items-center border-1 border-neutral-400 rounded-sm px-4 py-2'>
+										<FormItem className='flex-1 flex items-center border-1 border-neutral-400 rounded-sm px-4 py-2  hover:cursor-pointer'>
 											<FormControl className='border-neutral-300 aria-invalid:ring-neutral-300 aria-invalid:border-neutral-300'>
 												<RadioGroupItem value='support'></RadioGroupItem>
 											</FormControl>
@@ -133,7 +133,7 @@ export default function QueryForm() {
 									Message <span className='text-green-600'>*</span>
 								</FormLabel>
 								<FormControl>
-									<Textarea className='resize-none h-24 border-neutral-400 rounded-sm' {...field} />
+									<Textarea className='resize-none h-24 border-neutral-400 rounded-sm hover:cursor-pointer hover:border-teal-600' {...field} />
 								</FormControl>
 								<FormMessage className='text-left' />
 							</FormItem>
@@ -161,7 +161,7 @@ export default function QueryForm() {
 					/>
 				</div>
 				<div className='sm:col-span-2'>
-					<Button className='w-full bg-teal-700'>Submit</Button>
+					<Button className='w-full bg-teal-700 hover:cursor-pointer hover:bg-teal-900'>Submit</Button>
 				</div>
 			</form>
 		</Form>
