@@ -97,6 +97,7 @@ export default function QueryForm() {
 							<FormControl>
 								<Textarea className='resize-none' {...field} />
 							</FormControl>
+							<FormMessage />
 						</FormItem>
 					)}
 				></FormField>

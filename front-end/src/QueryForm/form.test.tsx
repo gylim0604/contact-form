@@ -108,4 +108,13 @@ describe('form should render', () => {
 		expect(input).toBeInTheDocument();
 		expect(input).toHaveAttribute('name', 'message');
 	});
+
+	it('throw error when message with empty value', async () => {
+		const submitButton = screen.getByRole('button', { name: /submit/i });
+
+		await userEvent.click(submitButton);
+		const input = screen.getByLabelText(/Message/i);
+		expect(input).toHaveAttribute('aria-invalid', 'true');
+		expect(input).toHaveAccessibleDescription(/This field is required/i);
+	});
 });
