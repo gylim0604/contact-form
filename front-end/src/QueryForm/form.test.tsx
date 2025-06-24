@@ -74,4 +74,11 @@ describe('form should render', () => {
 		expect(input).toHaveAttribute('aria-invalid', 'true');
 		expect(input).toHaveAccessibleDescription(/This field is required/i);
 	});
+
+	it('render with email address', () => {
+		render(<QueryForm />);
+		const lastNameInput = screen.getByLabelText(/Email Address/i);
+		expect(lastNameInput).toBeInTheDocument();
+		expect(lastNameInput).toHaveAttribute('name', 'email');
+	});
 });

@@ -69,6 +69,21 @@ export default function QueryForm() {
 					)}
 				></FormField>
 
+				<FormField
+					control={form.control}
+					name='email'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>
+								Email Address <span>*</span>
+							</FormLabel>
+							<FormControl>
+								<Input {...field} />
+							</FormControl>
+						</FormItem>
+					)}
+				></FormField>
+
 				<Button>Submit</Button>
 			</form>
 		</Form>
