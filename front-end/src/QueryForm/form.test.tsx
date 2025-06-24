@@ -4,6 +4,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import QueryForm from '.';
 import userEvent from '@testing-library/user-event';
+import { email } from 'zod/v4-mini';
 
 describe('form schema', () => {
 	it('passes with valid input', () => {
@@ -90,5 +91,18 @@ describe('form should render', () => {
 		const input = screen.getByLabelText(/Email Address/i);
 		expect(input).toHaveAttribute('aria-invalid', 'true');
 		expect(input).toHaveAccessibleDescription(/Please enter a valid email address/i);
+	});
+
+	it('throw error when email address submit with invalid value', async () => {
+		render(<QueryForm />);
+		const emailInput = screen.getByLabelText(/email/i);
+		const submitButton = screen.getByRole('button', { name: /submit/i });
+
+		await userEvent.type(emailInput, 'not-an-email');
+
+		await userEvent.click(submitButton);
+
+		expect(emailInput).toHaveAttribute('aria-invalid', 'true');
+		expect(emailInput).toHaveAccessibleDescription(/Please enter a valid email address/i);
 	});
 });
