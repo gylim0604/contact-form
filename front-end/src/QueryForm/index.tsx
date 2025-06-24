@@ -4,6 +4,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Textarea } from '@/components/ui/textarea';
+import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -50,7 +51,7 @@ export default function QueryForm() {
 								First Name <span className='text-green-600'>*</span>
 							</FormLabel>
 							<FormControl>
-								<Input className='border-neutral-400 rounded-sm hover:cursor-pointer hover:border-teal-600' {...field} />
+								<Input className='border-neutral-400 rounded-sm hover:cursor-pointer hover:border-teal-600 focus-visible:ring-0 focus-visible:border-teal-600' {...field} />
 							</FormControl>
 							<FormMessage className='text-left' />
 						</FormItem>
@@ -66,7 +67,7 @@ export default function QueryForm() {
 								Last Name <span className='text-green-600'>*</span>
 							</FormLabel>
 							<FormControl>
-								<Input className='border-neutral-400 rounded-sm hover:cursor-pointer hover:border-teal-600' {...field} />
+								<Input className='border-neutral-400 rounded-sm hover:cursor-pointer hover:border-teal-600 focus-visible:ring-0 focus-visible:border-teal-600' {...field} />
 							</FormControl>
 							<FormMessage className='text-left' />
 						</FormItem>
@@ -83,7 +84,7 @@ export default function QueryForm() {
 									Email Address <span className='text-green-600'>*</span>
 								</FormLabel>
 								<FormControl>
-									<Input className='border-neutral-400 rounded-sm hover:cursor-pointer hover:border-teal-600' {...field} />
+									<Input className='border-neutral-400 rounded-sm hover:cursor-pointer hover:border-teal-600 focus-visible:ring-0 focus-visible:border-teal-600' {...field} />
 								</FormControl>
 								<FormMessage className='text-left' />
 							</FormItem>
@@ -102,17 +103,21 @@ export default function QueryForm() {
 								</FormLabel>
 								<FormControl>
 									<RadioGroup onValueChange={field.onChange} className='flex gap-4'>
-										<FormItem className='flex-1 flex items-center border-1 border-neutral-400 rounded-sm px-4 py-2 hover:cursor-pointer'>
-											<FormControl className='border-neutral-300 aria-invalid:ring-neutral-300 aria-invalid:border-neutral-300'>
-												<RadioGroupItem value='general' />
-											</FormControl>
-											<FormLabel className='text-neutral-600 data-[error=true]:text-neutral-600'>General Enquiry</FormLabel>
+										<FormItem className='flex-1'>
+											<FormLabel htmlFor='query-general' className={cn(' flex items-center rounded-sm px-4 py-3 border text-neutral-600 data-[error=true]:text-neutral-600 hover:cursor-pointer', field.value === 'general' ? 'border-teal-600 bg-teal-50' : 'border-neutral-400')}>
+												<FormControl className='border-neutral-300 aria-invalid:ring-neutral-300 aria-invalid:border-neutral-300'>
+													<RadioGroupItem id='query-general' value='general' className='hover:cursor-pointer [&_svg]:fill-teal-600 data-[state=checked]:border-teal-600 focus-visible:ring-0'></RadioGroupItem>
+												</FormControl>
+												General Enquiry
+											</FormLabel>
 										</FormItem>
-										<FormItem className='flex-1 flex items-center border-1 border-neutral-400 rounded-sm px-4 py-2  hover:cursor-pointer'>
-											<FormControl className='border-neutral-300 aria-invalid:ring-neutral-300 aria-invalid:border-neutral-300'>
-												<RadioGroupItem value='support'></RadioGroupItem>
-											</FormControl>
-											<FormLabel className='text-neutral-600 data-[error=true]:text-neutral-600'>Support Request</FormLabel>
+										<FormItem className='flex-1'>
+											<FormLabel htmlFor='query-support' className={cn(' flex items-center rounded-sm px-4 py-3 border text-neutral-600 data-[error=true]:text-neutral-600 hover:cursor-pointer', field.value === 'support' ? 'border-teal-600 bg-teal-50' : 'border-neutral-400')}>
+												<FormControl className='border-neutral-300 aria-invalid:ring-neutral-300 aria-invalid:border-neutral-300'>
+													<RadioGroupItem id='query-support' value='support' className='hover:cursor-pointer [&_svg]:fill-teal-600 data-[state=checked]:border-teal-600 focus-visible:ring-0' />
+												</FormControl>
+												Support Request
+											</FormLabel>
 										</FormItem>
 									</RadioGroup>
 								</FormControl>
@@ -133,7 +138,7 @@ export default function QueryForm() {
 									Message <span className='text-green-600'>*</span>
 								</FormLabel>
 								<FormControl>
-									<Textarea className='resize-none h-24 border-neutral-400 rounded-sm hover:cursor-pointer hover:border-teal-600' {...field} />
+									<Textarea className='resize-none h-24 border-neutral-400 rounded-sm hover:cursor-pointer hover:border-teal-600 focus-visible:ring-0' {...field} />
 								</FormControl>
 								<FormMessage className='text-left' />
 							</FormItem>
@@ -149,7 +154,7 @@ export default function QueryForm() {
 							<FormItem>
 								<div className='flex gap-4'>
 									<FormControl>
-										<Checkbox className='border-neutral-300 aria-invalid:ring-neutral-300 aria-invalid:border-neutral-300 rounded-none border-2' checked={field.value} onCheckedChange={field.onChange} id='consent-checkbox' />
+										<Checkbox className='border-neutral-300 border-2 rounded-none aria-invalid:ring-neutral-300 aria-invalid:border-neutral-300 focus-visible:ring-0 focus-visible:border-teal-600 data-[state=checked]:bg-teal-600 data-[state=checked]:border-teal-600' checked={field.value} onCheckedChange={field.onChange} id='consent-checkbox' />
 									</FormControl>
 									<FormLabel className='text-neutral-600 data-[error=true]:text-neutral-600' htmlFor='consent-checkbox'>
 										I consent to being contacted by the team <span className='text-green-600'>*</span>
