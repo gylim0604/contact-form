@@ -57,4 +57,11 @@ describe('form should render', () => {
 		expect(input).toHaveAttribute('aria-invalid', 'true');
 		expect(input).toHaveAccessibleDescription(/This field is required/i);
 	});
+
+	it('render with last name field', () => {
+		render(<QueryForm />);
+		const lastNameInput = screen.getByLabelText(/Last Name/i);
+		expect(lastNameInput).toBeInTheDocument();
+		expect(lastNameInput).toHaveAttribute('name', 'lastName');
+	});
 });

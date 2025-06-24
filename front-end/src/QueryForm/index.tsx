@@ -53,6 +53,22 @@ export default function QueryForm() {
 					)}
 				></FormField>
 
+				<FormField
+					control={form.control}
+					name='lastName'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>
+								Last Name <span>*</span>
+							</FormLabel>
+							<FormControl>
+								<Input {...field} />
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				></FormField>
+
 				<Button>Submit</Button>
 			</form>
 		</Form>
