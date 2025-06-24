@@ -1,3 +1,4 @@
+import { Toaster } from 'sonner';
 import './App.css';
 import QueryForm from './QueryForm';
 
@@ -7,6 +8,7 @@ function App() {
 			<div className='bg-white rounded-2xl shadow-md w-full max-w-xl p-8'>
 				<QueryForm></QueryForm>
 			</div>
+			<Toaster position='top-center' />
 		</div>
 	);
 }

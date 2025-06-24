@@ -4,7 +4,6 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import QueryForm from '.';
 import userEvent from '@testing-library/user-event';
-import { email } from 'zod/v4-mini';
 
 describe('form schema', () => {
 	it('passes with valid input', () => {
@@ -155,4 +154,8 @@ describe('form should render', () => {
 		const input = screen.getByTestId(/queryType-error/i);
 		expect(input).toHaveTextContent(/Please select a query type/i);
 	});
+});
+
+describe('form should submit', () => {
+	it('filled out form should be able to submit', () => {});
 });

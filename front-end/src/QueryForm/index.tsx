@@ -6,7 +6,9 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { CircleCheck } from 'lucide-react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 import { z } from 'zod';
 
 export const formSchema = z.object({
@@ -34,7 +36,28 @@ export default function QueryForm() {
 	});
 
 	function onSubmit(values: z.infer<typeof formSchema>) {
-		console.log(values);
+		showToast();
+	}
+
+	function showToast() {
+		toast.dismiss();
+		toast(
+			<div>
+				<p className='flex gap-2 mb-2 items-center font-bold'>
+					<CircleCheck size={16} />
+					Message Sent!
+				</p>
+				<p>Thanks for completing the form. We'll be in touch soon!</p>
+			</div>,
+			{
+				duration: Infinity,
+				style: {
+					background: 'oklch(37.8% 0.077 168.94)',
+					color: 'white',
+					border: 'none',
+				},
+			}
+		);
 	}
 
 	return (
