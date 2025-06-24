@@ -129,4 +129,13 @@ describe('form should render', () => {
 		const input = screen.getByLabelText(/I consent to being contacted by the team/i);
 		expect(input).toBeInTheDocument();
 	});
+
+	it('throw error when consent is not checked', async () => {
+		const submitButton = screen.getByRole('button', { name: /submit/i });
+
+		await userEvent.click(submitButton);
+		const input = screen.getByLabelText(/I consent to being contacted by the team/i);
+		expect(input).toHaveAttribute('aria-invalid', 'true');
+		expect(input).toHaveAccessibleDescription(/To submit this form, please consent to being contacted/i);
+	});
 });
