@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -101,6 +102,22 @@ export default function QueryForm() {
 						</FormItem>
 					)}
 				></FormField>
+
+				<FormField
+					control={form.control}
+					name='checkbox'
+					render={({ field }) => (
+						<FormItem>
+							<FormControl>
+								<Checkbox checked={field.value} onCheckedChange={field.onChange} id='consent-checkbox' />
+							</FormControl>
+							<FormLabel htmlFor='consent-checkbox'>
+								I consent to being contacted by the team <span>*</span>
+							</FormLabel>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
 
 				<Button>Submit</Button>
 			</form>

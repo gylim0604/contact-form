@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+import { beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { formSchema } from '.';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
@@ -42,6 +42,13 @@ describe('form schema', () => {
 });
 
 describe('form should render', () => {
+	beforeAll(() => {
+		global.ResizeObserver = class {
+			observe() {}
+			unobserve() {}
+			disconnect() {}
+		};
+	});
 	beforeEach(() => {
 		render(<QueryForm />);
 	});
@@ -116,5 +123,10 @@ describe('form should render', () => {
 		const input = screen.getByLabelText(/Message/i);
 		expect(input).toHaveAttribute('aria-invalid', 'true');
 		expect(input).toHaveAccessibleDescription(/This field is required/i);
+	});
+
+	it('render with consent checkbox', () => {
+		const input = screen.getByLabelText(/I consent to being contacted by the team/i);
+		expect(input).toBeInTheDocument();
 	});
 });
