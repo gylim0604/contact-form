@@ -38,8 +38,9 @@ export default function QueryForm() {
 
 	return (
 		<Form {...form}>
-			<p>Contact Us</p>
-			<form onSubmit={form.handleSubmit(onSubmit)}>
+			<h3>Contact Us</h3>
+			<form onSubmit={form.handleSubmit(onSubmit)} className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+				{/* First Name */}
 				<FormField
 					control={form.control}
 					name='firstName'
@@ -54,8 +55,8 @@ export default function QueryForm() {
 							<FormMessage />
 						</FormItem>
 					)}
-				></FormField>
-
+				/>
+				{/* Last Name */}
 				<FormField
 					control={form.control}
 					name='lastName'
@@ -71,83 +72,95 @@ export default function QueryForm() {
 						</FormItem>
 					)}
 				></FormField>
+				{/* Email */}
+				<div className='md:col-span-2'>
+					<FormField
+						control={form.control}
+						name='email'
+						render={({ field }) => (
+							<FormItem>
+								<FormLabel>
+									Email Address <span>*</span>
+								</FormLabel>
+								<FormControl>
+									<Input {...field} />
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+				</div>
+				{/* Query Type */}
+				<div className='md:col-span-2'>
+					<FormField
+						control={form.control}
+						name='queryType'
+						render={({ field }) => (
+							<FormItem>
+								<FormLabel>
+									Query Type <span>*</span>
+								</FormLabel>
+								<FormControl>
+									<RadioGroup onValueChange={field.onChange}>
+										<FormItem>
+											<FormControl>
+												<RadioGroupItem value='general' />
+											</FormControl>
+											<FormLabel>General Enquiry</FormLabel>
+										</FormItem>
+										<FormItem>
+											<FormControl>
+												<RadioGroupItem value='support'></RadioGroupItem>
+											</FormControl>
+											<FormLabel>Support Request</FormLabel>
+										</FormItem>
+									</RadioGroup>
+								</FormControl>
+								<FormMessage data-testid='queryType-error' />
+							</FormItem>
+						)}
+					/>
+				</div>
+				{/* Message */}
 
-				<FormField
-					control={form.control}
-					name='email'
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>
-								Email Address <span>*</span>
-							</FormLabel>
-							<FormControl>
-								<Input {...field} />
-							</FormControl>
-							<FormMessage />
-						</FormItem>
-					)}
-				></FormField>
-				<FormField
-					control={form.control}
-					name='queryType'
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>
-								Query Type <span>*</span>
-							</FormLabel>
-							<FormControl>
-								<RadioGroup onValueChange={field.onChange}>
-									<FormItem>
-										<FormControl>
-											<RadioGroupItem value='general' />
-										</FormControl>
-										<FormLabel>General Enquiry</FormLabel>
-									</FormItem>
-									<FormItem>
-										<FormControl>
-											<RadioGroupItem value='support'></RadioGroupItem>
-										</FormControl>
-										<FormLabel>Support Request</FormLabel>
-									</FormItem>
-								</RadioGroup>
-							</FormControl>
-							<FormMessage data-testid='queryType-error' />
-						</FormItem>
-					)}
-				></FormField>
-				<FormField
-					control={form.control}
-					name='message'
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>
-								Message <span>*</span>
-							</FormLabel>
-							<FormControl>
-								<Textarea className='resize-none' {...field} />
-							</FormControl>
-							<FormMessage />
-						</FormItem>
-					)}
-				></FormField>
-
-				<FormField
-					control={form.control}
-					name='checkbox'
-					render={({ field }) => (
-						<FormItem>
-							<FormControl>
-								<Checkbox checked={field.value} onCheckedChange={field.onChange} id='consent-checkbox' />
-							</FormControl>
-							<FormLabel htmlFor='consent-checkbox'>
-								I consent to being contacted by the team <span>*</span>
-							</FormLabel>
-							<FormMessage />
-						</FormItem>
-					)}
-				/>
-
-				<Button>Submit</Button>
+				<div className='md:col-span-2'>
+					<FormField
+						control={form.control}
+						name='message'
+						render={({ field }) => (
+							<FormItem>
+								<FormLabel>
+									Message <span>*</span>
+								</FormLabel>
+								<FormControl>
+									<Textarea className='resize-none' {...field} />
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+				</div>
+				{/* Checkbox */}
+				<div className='md:col-span-2'>
+					<FormField
+						control={form.control}
+						name='checkbox'
+						render={({ field }) => (
+							<FormItem>
+								<FormControl>
+									<Checkbox checked={field.value} onCheckedChange={field.onChange} id='consent-checkbox' />
+								</FormControl>
+								<FormLabel htmlFor='consent-checkbox'>
+									I consent to being contacted by the team <span>*</span>
+								</FormLabel>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+				</div>
+				<div className='md:col-span-2'>
+					<Button>Submit</Button>
+				</div>
 			</form>
 		</Form>
 	);
