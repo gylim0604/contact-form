@@ -65,7 +65,7 @@ describe('form should render', () => {
 		expect(lastNameInput).toHaveAttribute('name', 'lastName');
 	});
 
-	it('throw error when first name submit with empty value', async () => {
+	it('throw error when last name submit with empty value', async () => {
 		render(<QueryForm />);
 		const submitButton = screen.getByRole('button', { name: /submit/i });
 
