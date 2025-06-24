@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { formSchema } from '.';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
@@ -42,15 +42,17 @@ describe('form schema', () => {
 });
 
 describe('form should render', () => {
-	it('render with first name field', () => {
+	beforeEach(() => {
 		render(<QueryForm />);
+	});
+
+	it('render with first name field', () => {
 		const firstNameInput = screen.getByLabelText(/first name/i);
 		expect(firstNameInput).toBeInTheDocument();
 		expect(firstNameInput).toHaveAttribute('name', 'firstName');
 	});
 
 	it('throw error when first name submit with empty value', async () => {
-		render(<QueryForm />);
 		const submitButton = screen.getByRole('button', { name: /submit/i });
 
 		await userEvent.click(submitButton);
@@ -60,14 +62,12 @@ describe('form should render', () => {
 	});
 
 	it('render with last name field', () => {
-		render(<QueryForm />);
 		const lastNameInput = screen.getByLabelText(/Last Name/i);
 		expect(lastNameInput).toBeInTheDocument();
 		expect(lastNameInput).toHaveAttribute('name', 'lastName');
 	});
 
 	it('throw error when last name submit with empty value', async () => {
-		render(<QueryForm />);
 		const submitButton = screen.getByRole('button', { name: /submit/i });
 
 		await userEvent.click(submitButton);
@@ -77,14 +77,12 @@ describe('form should render', () => {
 	});
 
 	it('render with email address', () => {
-		render(<QueryForm />);
 		const lastNameInput = screen.getByLabelText(/Email Address/i);
 		expect(lastNameInput).toBeInTheDocument();
 		expect(lastNameInput).toHaveAttribute('name', 'email');
 	});
 
 	it('throw error when email address submit with empty value', async () => {
-		render(<QueryForm />);
 		const submitButton = screen.getByRole('button', { name: /submit/i });
 
 		await userEvent.click(submitButton);
@@ -94,7 +92,6 @@ describe('form should render', () => {
 	});
 
 	it('throw error when email address submit with invalid value', async () => {
-		render(<QueryForm />);
 		const emailInput = screen.getByLabelText(/email/i);
 		const submitButton = screen.getByRole('button', { name: /submit/i });
 
