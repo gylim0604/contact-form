@@ -1,5 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { formSchema } from '.';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import QueryForm from '.';
 
 describe('form schema', () => {
 	it('passes with valid input', () => {
@@ -33,5 +36,14 @@ describe('form schema', () => {
 			expect(errors.message?._errors[0]).toEqual('This field is required');
 			expect(errors.checkbox?._errors[0]).toEqual('To submit this form, please consent to being contacted');
 		}
+	});
+});
+
+describe('form should render', () => {
+	it('render with first name field', () => {
+		render(<QueryForm />);
+		const firstNameInput = screen.getByLabelText(/first name/i);
+		expect(firstNameInput).toBeInTheDocument();
+		expect(firstNameInput).toHaveAttribute('name', 'firstName'); // Optional check
 	});
 });
