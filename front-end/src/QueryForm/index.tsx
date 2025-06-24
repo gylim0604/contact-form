@@ -80,6 +80,7 @@ export default function QueryForm() {
 							<FormControl>
 								<Input {...field} />
 							</FormControl>
+							<FormMessage />
 						</FormItem>
 					)}
 				></FormField>

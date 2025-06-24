@@ -81,4 +81,14 @@ describe('form should render', () => {
 		expect(lastNameInput).toBeInTheDocument();
 		expect(lastNameInput).toHaveAttribute('name', 'email');
 	});
+
+	it('throw error when email address submit with empty value', async () => {
+		render(<QueryForm />);
+		const submitButton = screen.getByRole('button', { name: /submit/i });
+
+		await userEvent.click(submitButton);
+		const input = screen.getByLabelText(/Email Address/i);
+		expect(input).toHaveAttribute('aria-invalid', 'true');
+		expect(input).toHaveAccessibleDescription(/Please enter a valid email address/i);
+	});
 });
