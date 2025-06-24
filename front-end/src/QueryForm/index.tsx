@@ -46,11 +46,11 @@ export default function QueryForm() {
 					name='firstName'
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel className='text-neutral-600 data-[error=true]:text-neutral-600'>
+							<FormLabel className='text-neutral-600 data-[error=true]:text-neutral-600 mb-1'>
 								First Name <span className='text-green-600'>*</span>
 							</FormLabel>
 							<FormControl>
-								<Input className='border-neutral-400' {...field} />
+								<Input className='border-neutral-400 rounded-sm' {...field} />
 							</FormControl>
 							<FormMessage className='text-left' />
 						</FormItem>
@@ -62,11 +62,11 @@ export default function QueryForm() {
 					name='lastName'
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel className='text-neutral-600 data-[error=true]:text-neutral-600'>
+							<FormLabel className='text-neutral-600 data-[error=true]:text-neutral-600 mb-1'>
 								Last Name <span className='text-green-600'>*</span>
 							</FormLabel>
 							<FormControl>
-								<Input className='border-neutral-400' {...field} />
+								<Input className='border-neutral-400 rounded-sm' {...field} />
 							</FormControl>
 							<FormMessage className='text-left' />
 						</FormItem>
@@ -79,11 +79,11 @@ export default function QueryForm() {
 						name='email'
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel className='text-neutral-600 data-[error=true]:text-neutral-600'>
+								<FormLabel className='text-neutral-600 data-[error=true]:text-neutral-600 mb-1'>
 									Email Address <span className='text-green-600'>*</span>
 								</FormLabel>
 								<FormControl>
-									<Input className='border-neutral-400' {...field} />
+									<Input className='border-neutral-400 rounded-sm' {...field} />
 								</FormControl>
 								<FormMessage className='text-left' />
 							</FormItem>
@@ -97,18 +97,18 @@ export default function QueryForm() {
 						name='queryType'
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel className='text-neutral-600 data-[error=true]:text-neutral-600'>
+								<FormLabel className='text-neutral-600 data-[error=true]:text-neutral-600 mb-2'>
 									Query Type <span className='text-green-600'>*</span>
 								</FormLabel>
 								<FormControl>
 									<RadioGroup onValueChange={field.onChange} className='flex gap-4'>
-										<FormItem className='flex-1 flex items-center border-1 border-neutral-400 rounded px-4 py-2'>
+										<FormItem className='flex-1 flex items-center border-1 border-neutral-400 rounded-sm px-4 py-2'>
 											<FormControl className='border-neutral-300 aria-invalid:ring-neutral-300 aria-invalid:border-neutral-300'>
 												<RadioGroupItem value='general' />
 											</FormControl>
 											<FormLabel className='text-neutral-600 data-[error=true]:text-neutral-600'>General Enquiry</FormLabel>
 										</FormItem>
-										<FormItem className='flex-1 flex items-center border-1 border-neutral-400 rounded px-4 py-2'>
+										<FormItem className='flex-1 flex items-center border-1 border-neutral-400 rounded-sm px-4 py-2'>
 											<FormControl className='border-neutral-300 aria-invalid:ring-neutral-300 aria-invalid:border-neutral-300'>
 												<RadioGroupItem value='support'></RadioGroupItem>
 											</FormControl>
@@ -129,11 +129,11 @@ export default function QueryForm() {
 						name='message'
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel className='text-neutral-600 data-[error=true]:text-neutral-600'>
+								<FormLabel className='text-neutral-600 data-[error=true]:text-neutral-600 mb-1'>
 									Message <span className='text-green-600'>*</span>
 								</FormLabel>
 								<FormControl>
-									<Textarea className='resize-none border-neutral-400' {...field} />
+									<Textarea className='resize-none h-24 border-neutral-400 rounded-sm' {...field} />
 								</FormControl>
 								<FormMessage className='text-left' />
 							</FormItem>
@@ -149,7 +149,7 @@ export default function QueryForm() {
 							<FormItem>
 								<div className='flex gap-4'>
 									<FormControl>
-										<Checkbox className='border-neutral-400 aria-invalid:ring-neutral-400 aria-invalid:border-neutral-400' checked={field.value} onCheckedChange={field.onChange} id='consent-checkbox' />
+										<Checkbox className='border-neutral-300 aria-invalid:ring-neutral-300 aria-invalid:border-neutral-300 rounded-none border-2' checked={field.value} onCheckedChange={field.onChange} id='consent-checkbox' />
 									</FormControl>
 									<FormLabel className='text-neutral-600 data-[error=true]:text-neutral-600' htmlFor='consent-checkbox'>
 										I consent to being contacted by the team <span className='text-green-600'>*</span>
