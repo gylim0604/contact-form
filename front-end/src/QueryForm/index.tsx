@@ -86,7 +86,34 @@ export default function QueryForm() {
 						</FormItem>
 					)}
 				></FormField>
+				<FormField
+					control={form.control}
+					name='queryType'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>
+								Query Type <span>*</span>
+							</FormLabel>
+							<FormControl>
+								<RadioGroup onValueChange={field.onChange}>
+									<FormItem>
+										<FormControl>
+											<RadioGroupItem value='general' />
+										</FormControl>
+										<FormLabel>General Enquiry</FormLabel>
+									</FormItem>
+									<FormItem>
+										<FormControl>
+											<RadioGroupItem value='support'></RadioGroupItem>
+										</FormControl>
+										<FormLabel>Support Request</FormLabel>
+									</FormItem>
+								</RadioGroup>
+							</FormControl>
 
+						</FormItem>
+					)}
+				></FormField>
 				<FormField
 					control={form.control}
 					name='message'

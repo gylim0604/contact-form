@@ -138,4 +138,12 @@ describe('form should render', () => {
 		expect(input).toHaveAttribute('aria-invalid', 'true');
 		expect(input).toHaveAccessibleDescription(/To submit this form, please consent to being contacted/i);
 	});
+
+	it('render with query type', () => {
+		const generalRadio = screen.getByLabelText(/General Enquiry/i);
+		const supportRadio = screen.getByLabelText(/Support Request/i);
+
+		expect(generalRadio).toBeInTheDocument();
+		expect(supportRadio).toBeInTheDocument();
+	});
 });
