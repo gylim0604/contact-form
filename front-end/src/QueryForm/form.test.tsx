@@ -146,4 +146,13 @@ describe('form should render', () => {
 		expect(generalRadio).toBeInTheDocument();
 		expect(supportRadio).toBeInTheDocument();
 	});
+
+	it('throw error when no query type are selected', async () => {
+		const submitButton = screen.getByRole('button', { name: /submit/i });
+
+		await userEvent.click(submitButton);
+
+		const input = screen.getByTestId(/queryType-error/i);
+		expect(input).toHaveTextContent(/Please select a query type/i);
+	});
 });
