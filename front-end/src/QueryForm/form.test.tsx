@@ -64,4 +64,14 @@ describe('form should render', () => {
 		expect(lastNameInput).toBeInTheDocument();
 		expect(lastNameInput).toHaveAttribute('name', 'lastName');
 	});
+
+	it('throw error when first name submit with empty value', async () => {
+		render(<QueryForm />);
+		const submitButton = screen.getByRole('button', { name: /submit/i });
+
+		await userEvent.click(submitButton);
+		const input = screen.getByLabelText(/last name/i);
+		expect(input).toHaveAttribute('aria-invalid', 'true');
+		expect(input).toHaveAccessibleDescription(/This field is required/i);
+	});
 });
